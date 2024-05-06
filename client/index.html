@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <body>
+        <h1>Введите данные</h1>
+        <form id="form1" action="/submit" method="get">
+            <label for="id">id</label>
+            <input type="text" id="id" name="id"><br><br>
+
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label for="lastname">Фамилия</label>
+            <input type="text" id="lastname" name="lastname"><br><br>
+
+            <label for="age">Возвраст</label>
+            <input type="text" id="age" name="age"><br><br>
+
+            <label for="tg_login">Тг логин</label>
+            <input type="text" id="tg_login" name="tg_login"><br><br>
+
+            <input type="submit" value="Отправить">
+
+        </form>
+        <script>
+            document.getElementById('form1').onsubmit = (e) => {
+                e.preventDefault()
+                console.log(e.target.value);
+                const formData = new FormData(e.target);
+                let id = formData.get('id')
+                let name = formData.get('name')
+                let lastname = formData.get('lastname')
+                let tg_login = formData.get('tg_login')
+                let age = formData.get('age')
+                let result = []
+                // условие по ключам
+                if (id) {
+                    result.push(`id_user=${id}`)
+                }
+
+                if (name) {
+
+                    result.push(`name=${name}`)
+                }
+                if (lastname) {
+                    result.push(`lastname=${lastname}`)
+                }
+                if (age) {
+                    result.push(`age=${age}`)
+                }
+                if (tg_login) {
+                    result.push(`tg_login=${tg_login}`)
+                }
+                console.log(result);
+                console.log(result.join('&'));
+                let result_str_to_save = `http://45.8.248.11:3010/update_user?${result.join('&')}`;
+                console.log(result_str_to_save);
+
+                fetch(result_str_to_save)
+                    .then(res => res.json())
+                    .then(res => console.log(res))
+            }
+        </script>
+    </body>
+</body>
+
+</html>
