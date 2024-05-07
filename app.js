@@ -67,7 +67,7 @@ bot.on('message', (msg) => {
 
 
 app.get('/', function (req, res) {
-    res.send('Hello World')
+    res.send('Hello')
 })
 
 app.get('/add_user', function (req, res) {
