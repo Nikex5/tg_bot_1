@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Flex, Table, message, Modal } from 'antd';
+import { Card, Flex, Table, message, Modal, Input } from 'antd';
 import { EditOutlined, CloseOutlined } from '@ant-design/icons';
 import CreateUser from "./CreateUser";
 
@@ -14,7 +14,16 @@ function Users() {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const [updateUser, setUpdateUser] = useState(null)
+
+    const [changeName, setChangeName] = useState('')
+
+    const [changeLastName, setChangeLastName] = useState('')
+
     const handleOk = () => {
+        console.log(changeName);
+        console.log(changeLastName);
+        // fetch('/update_user')
         setIsModalOpen(false);
     };
     const handleCancel = () => {
@@ -31,8 +40,12 @@ function Users() {
     }
 
 
-    const update = () => {
+    const update = (user) => {
+        console.log(user);
+        setUpdateUser(user)
         setIsModalOpen(true);
+
+
 
     }
 
@@ -99,7 +112,7 @@ function Users() {
 
                     users.map((item) => {
                         return <div>
-                            {item.id} {item.name} {item.lastname} {item.age} {item.tg_login} <EditOutlined onClick={() => update(item.id)} />
+                            {item.id} {item.name} {item.lastname} {item.age} {item.tg_login} <EditOutlined onClick={() => update(item)} />
                             <CloseOutlined onClick={() => deleteUser(item.id)} />
                         </div>
                     })
@@ -128,8 +141,10 @@ function Users() {
             < Table dataSource={users} columns={columns} />;
             <div>
                 <Modal title="Обновление данных пользователя!" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                    <p>Some contents...</p>
-
+                    {/* если updateUser не равен null */}
+                    <p>Имя</p>
+                    <Input type="text" defaultValue={updateUser !== null && updateUser.name} onChange={(e) => setChangeName(e.target.value)} />
+                    <Input type="text" defaultValue={updateUser !== null && updateUser.lastname} onChange={(e) => setChangeLastName(e.target.value)} />
                 </Modal>
             </div>
 
