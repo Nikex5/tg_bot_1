@@ -1,4 +1,5 @@
 {
+  "proxy": "http://localhost:3010",
   "name": "front_tg_bot_1",
   "version": "0.1.0",
   "private": true,

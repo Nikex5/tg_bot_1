@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, Flex, Table, message, Modal, Input } from 'antd';
 import { EditOutlined, CloseOutlined } from '@ant-design/icons';
 import CreateUser from "./CreateUser";
+import UpdateUser from "./UpdateUser";
 
 
 function Users() {
@@ -107,7 +108,7 @@ function Users() {
             </div>
 
             <div>
-                <h1>простая отрисовка</h1>
+                <h1>простая отрисовка!</h1>
                 {users.length > 0 &&
 
                     users.map((item) => {
@@ -142,9 +143,10 @@ function Users() {
             <div>
                 <Modal title="Обновление данных пользователя!" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                     {/* если updateUser не равен null */}
-                    <p>Имя</p>
+                    {/* <p>Имя</p>
                     <Input type="text" defaultValue={updateUser !== null && updateUser.name} onChange={(e) => setChangeName(e.target.value)} />
-                    <Input type="text" defaultValue={updateUser !== null && updateUser.lastname} onChange={(e) => setChangeLastName(e.target.value)} />
+                    <Input type="text" defaultValue={updateUser !== null && updateUser.lastname} onChange={(e) => setChangeLastName(e.target.value)} /> */}
+                    <UpdateUser />
                 </Modal>
             </div>
 
