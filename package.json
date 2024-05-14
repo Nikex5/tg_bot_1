@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm instal && npm instal --prefix client_react && npm run build && node app.js",
+    "start": "npm instal && npm instal --prefix client_react && npm run build --prefix client_react && node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
