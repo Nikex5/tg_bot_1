@@ -4,12 +4,16 @@ const onFinish = (values) => {
     console.log('Success:', values);
     fetch(`/add_user?name=${values.username}&lastname=${values.lastname}&age=${values.age}&tg_login=${values.tglogin}`)
         .then(res => res.json)
-        .then(res => console.log(res))
+        .then(res => {
+            if (res.response.length === 0) {
+                props.refresh()
+            }
+        })
 };
 const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
 };
-const CreateUser = () => (
+const CreateUser = (props) => (
     <Form
         name="basic"
         labelCol={{

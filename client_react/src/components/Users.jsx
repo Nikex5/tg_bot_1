@@ -113,7 +113,7 @@ function Users() {
             <div>
                 <h1>Создание пользователя</h1>
 
-                <CreateUser />
+                <CreateUser refresh={getUsers} />
             </div>
 
             <div>
