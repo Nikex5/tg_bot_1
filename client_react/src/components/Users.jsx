@@ -158,8 +158,8 @@ function Users() {
                             {/* <input key={updateUser !== null && updateUser.name} type="text" defaultValue={updateUser !== null && updateUser.name} onChange={(e) => setChangeName(e.target.value)} />
                             <input key={updateUser !== null && updateUser.lastname} type="text" defaultValue={updateUser !== null && updateUser.lastname} onChange={(e) => setChangeLastName(e.target.value)} /> */}
                             {/* <UpdateUser /> */}
-                            <p>{updateUser.name} <input type="text" onChange={(e) => setChangeName(e.target.value)} /></p>
-                            <p>{updateUser.lastname} <input type="text" onChange={(e) => setChangeLastName(e.target.value)} /></p>
+                            <p>{updateUser.name} <input key={updateUser.name} type="text" onChange={(e) => setChangeName(e.target.value)} /></p>
+                            <p>{updateUser.lastname} <input key={updateUser.lastname} type="text" onChange={(e) => setChangeLastName(e.target.value)} /></p>
                         </div>
                     }
                 </Modal>
