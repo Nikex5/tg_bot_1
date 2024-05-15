@@ -24,8 +24,17 @@ function Users() {
     const handleOk = () => {
         console.log(changeName);
         console.log(changeLastName);
-        // fetch('/update_user')
+        fetch(`/update_user?name=${changeName}&lastname=${changeLastName}&id_user=${updateUser.id}`)
+            .then(res => res.json())
+            .then(res => {
+                if (res.response.length === 0) {
+                    getUsers()
+                } else (
+                    console.log(res)
+                )
+            })
         setIsModalOpen(false);
+
     };
     const handleCancel = () => {
         setIsModalOpen(false);
@@ -143,10 +152,16 @@ function Users() {
             <div>
                 <Modal title="Обновление данных пользователя!" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                     {/* если updateUser не равен null */}
-                    {/* <p>Имя</p>
-                    <Input type="text" defaultValue={updateUser !== null && updateUser.name} onChange={(e) => setChangeName(e.target.value)} />
-                    <Input type="text" defaultValue={updateUser !== null && updateUser.lastname} onChange={(e) => setChangeLastName(e.target.value)} /> */}
-                    <UpdateUser />
+                    <p>Имя</p>
+                    {updateUser !== null &&
+                        <div>
+                            {/* <input key={updateUser !== null && updateUser.name} type="text" defaultValue={updateUser !== null && updateUser.name} onChange={(e) => setChangeName(e.target.value)} />
+                            <input key={updateUser !== null && updateUser.lastname} type="text" defaultValue={updateUser !== null && updateUser.lastname} onChange={(e) => setChangeLastName(e.target.value)} /> */}
+                            {/* <UpdateUser /> */}
+                            <p>{updateUser.name} <input type="text" onChange={(e) => setChangeName(e.target.value)} /></p>
+                            <p>{updateUser.lastname} <input type="text" onChange={(e) => setChangeLastName(e.target.value)} /></p>
+                        </div>
+                    }
                 </Modal>
             </div>
 
