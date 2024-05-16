@@ -1,0 +1,1 @@
+// "start": "npm instal && npm instal --prefix client_react && npm run build --prefix client_react && node app.js",
